@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackQueryHandler
-import os
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN")  # توکن از Environment Variable
+# توکن ربات را مستقیماً داخل کد قرار دادیم
+BOT_TOKEN = "7103256242:AAHf2fUAnCptUsMTBdNlsibJ8ZKWaSa9Z0M"
 
+# --- دستورات اصلی ---
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [InlineKeyboardButton("ثبت نام", callback_data='register')],
@@ -24,6 +25,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == 'video':
         await query.edit_message_text(text="ویدیو آموزش در حال حاضر آماده نیست.")
 
+# --- اجرای ربات ---
 if __name__ == '__main__':
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
