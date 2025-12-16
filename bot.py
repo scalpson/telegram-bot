@@ -2,7 +2,6 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackQueryHandler
 import os
-import os
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 # منو اصلی
@@ -36,3 +35,4 @@ if __name__ == '__main__':
     
     print("Bot is running...")
     app.run_polling()
+
