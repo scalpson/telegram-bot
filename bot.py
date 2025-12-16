@@ -1,7 +1,8 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackQueryHandler
 import os
+
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 # منو اصلی
@@ -12,7 +13,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("ویدیو آموزش", callback_data='video')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    # حتماً از await استفاده شود
     await update.message.reply_text('به ربات معامله گر خوش آمدید!', reply_markup=reply_markup)
 
 # هندلر Callback
@@ -35,4 +35,3 @@ if __name__ == '__main__':
     
     print("Bot is running...")
     app.run_polling()
-
