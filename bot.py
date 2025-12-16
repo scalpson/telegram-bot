@@ -3,6 +3,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackQueryHandler
 import os
 
+# گرفتن توکن از Environment Variable
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 # منو اصلی
@@ -15,7 +16,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text('به ربات معامله گر خوش آمدید!', reply_markup=reply_markup)
 
-# هندلر Callback
+# هندلر دکمه‌ها
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -29,9 +30,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # اجرای ربات
 if __name__ == '__main__':
     app = ApplicationBuilder().token(BOT_TOKEN).build()
-    
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button))
-    
     print("Bot is running...")
     app.run_polling()
